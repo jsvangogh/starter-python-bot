@@ -2,6 +2,8 @@ import json
 import logging
 import re
 
+import urllib.request
+
 logger = logging.getLogger(__name__)
 
 
@@ -40,6 +42,10 @@ class RtmEventHandler(object):
             self.msg_writer.same(event['channel'], "file: " + event['file']['url_private_download'])
             link = str(event['file']['url_private_download'])
             
+            local_filename, headers = urllib.request.urlretrieve(link)
+            html = open(local_filename)
+            self.msg_writer.same(event['channel'], "html: " + str(html))
+
 
             self.msg_writer.same(event['channel'], "Keys: " + str(event.keys()))
 
@@ -55,7 +61,7 @@ class RtmEventHandler(object):
                     self.msg_writer.demo_attachment(event['channel'])
                 elif 'graph' in msg_txt:
                     self.msg_writer.graph(event['channel'])
-                elif 'csv' in msg_txt:
-                    self.msg_writer.same(event['channel'], msg_txt)
+                #elif 'csv' in msg_txt:
+                #    self.msg_writer.same(event['channel'], msg_txt)
                 else:
                     self.msg_writer.write_prompt(event['channel'])
