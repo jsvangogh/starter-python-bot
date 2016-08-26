@@ -42,9 +42,6 @@ class RtmEventHandler(object):
             msg_txt = event['text']
             self.msg_writer.same(event['channel'], "file: " + event['file']['url_private_download'])
             link = str(event['file']['url_private_download'])
-            htmlfile = urllib.request.urlopen(link)
-            soup = BeautifulSoup(htmlfile, 'html.parser')
-            self.msg_writer.same(event['channel'], "soup: " + str(soup))
             
 
             self.msg_writer.same(event['channel'], "Keys: " + str(event.keys()))
