@@ -4,7 +4,39 @@ import random
 import requests
 from bs4 import BeautifulSoup
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib
+
 logger = logging.getLogger(__name__)
+
+def make_pie( df, column ):
+	counts = pd.DataFrame(df[column].value_counts())
+
+	plot = counts.plot.pie(y=column)
+	fig = plot.get_figure()
+	plt.show()
+
+def make_bar( df, column ):
+	counts = pd.DataFrame(df[column].value_counts())
+
+	plot = counts.plot.bar(y=column)
+	fig = plot.get_figure()
+	plt.show()
+
+def make_scatter( df, x_axis, y_axis):
+	dfplot = df.plot.scatter(x=x_axis, y=y_axis)
+	fig = dfplot.get_figure()
+	plt.show()
+
+def make_box( df, column ):
+	if column not in df:
+		plot = df.plot.box()
+	else:
+		plot = df.plot.box(y=column)
+
+	fig = plot.get_figure()
+	plt.show()
 
 
 class Messenger(object):
@@ -80,5 +112,30 @@ class Messenger(object):
             for line in pre:
                 out_file.write(str(line.encode('utf-8'))[5:-6])
 
-        self.send_message(channel_id, 'j')
+        ####### DEFINE THE CSV TO READ FROM ########
+        df = pd.read_csv("./csv.csv")
+        
+        ####### GET COLUMNS #########
+        columns = list(df.columns.values)
+        print "columns in dataframe: " + str(columns)
+        
+        
+        print "available plot types ['bar', 'barh', 'box', 'density', 'hexbin', 'hist', 'kde', 'line', 'pie', 'scatter']"
+
+        # plot shit goes here
+
+        
+
+        #self.send_message(channel_id, 'j')
+        attachment = {
+            "pretext": "We bring bots to life. :sunglasses: :thumbsup:",
+            "title": "Host, deploy and share your bot in seconds.",
+            "title_link": "https://beepboophq.com/",
+            "text": txt,
+            "fallback": txt,
+            #"image_url": "https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png",
+            "image_url": "josh.png",
+            "color": "#7CD197",
+        }
+        self.clients.web.chat.post_message(channel_id, 'j', attachments=[attachment], as_user='true')
     
