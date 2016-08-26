@@ -38,7 +38,7 @@ class RtmEventHandler(object):
 
             msg_txt = event['text']
 
-            if self.clients.is_bot_mention(msg_txt):
+            if self.clients.is_bot_mention(msg_txt) or event['channel'][0] == 'D':
                 # e.g. user typed: "@pybot tell me a joke!"
                 if 'help' in msg_txt:
                     self.msg_writer.write_help_message(event['channel'])
@@ -48,5 +48,8 @@ class RtmEventHandler(object):
                     self.msg_writer.write_joke(event['channel'])
                 elif 'attachment' in msg_txt:
                     self.msg_writer.demo_attachment(event['channel'])
+		        elif 'graph' in msg_txt:
+                    self.msg_writer.graph(event['channel'])
+
                 else:
                     self.msg_writer.write_prompt(event['channel'])
