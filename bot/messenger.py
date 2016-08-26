@@ -4,9 +4,6 @@ import random
 import requests
 from bs4 import BeautifulSoup
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib
 
 logger = logging.getLogger(__name__)
 
