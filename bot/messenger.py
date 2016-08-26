@@ -74,8 +74,11 @@ class Messenger(object):
         soup = BeautifulSoup(r.text)
         res = soup.find("div", {"class":"CodeMirror-code"})
         pre = res.find_all('pre')
-        msg = str(pre[0].encode('utf-8'))
+        #msg = str(pre[0].encode('utf-8'))[5:-6]
+        
+        with open('csv.csv', 'wt') as out_file:
+            for line in pre:
+                out_file.write(str(line.encode('utf-8'))[5:-6])
 
-
-        self.send_message(channel_id, msg)
+        self.send_message(channel_id, 'j')
     
