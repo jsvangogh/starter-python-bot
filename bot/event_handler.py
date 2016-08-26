@@ -54,5 +54,7 @@ class RtmEventHandler(object):
                     self.msg_writer.graph(event['channel'])
                 #elif 'csv' in msg_txt:
                 #    self.msg_writer.same(event['channel'], msg_txt)
+                elif 'public' in msg_txt:
+                    self.msg_writer.process_csv(event['channel'], msg_txt)
                 else:
                     self.msg_writer.write_prompt(event['channel'])
