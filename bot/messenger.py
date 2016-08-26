@@ -4,6 +4,11 @@ import random
 import requests
 from bs4 import BeautifulSoup
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib
+import PIL.Image
+import base64
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +29,7 @@ def make_bar( df, column ):
 def make_scatter( df, x_axis, y_axis):
 	dfplot = df.plot.scatter(x=x_axis, y=y_axis)
 	fig = dfplot.get_figure()
-	plt.show()
+	fig.savefig('output.png')
 
 def make_box( df, column ):
 	if column not in df:
@@ -120,9 +125,9 @@ class Messenger(object):
         #print "available plot types ['bar', 'barh', 'box', 'density', 'hexbin', 'hist', 'kde', 'line', 'pie', 'scatter']"
 
         # plot shit goes here
-
-        txt = 'hi'
-        
+        df = pd.read_csv("./csv.csv")
+        make_scatter(df, 'Attack', 'HP')
+        txt = base64.b64encode(open("output.png", "rb").read())
 
         #self.send_message(channel_id, 'j')
         attachment = {
