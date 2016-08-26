@@ -128,7 +128,7 @@ class Messenger(object):
         make_scatter(df, 'Attack', 'HP')
         txt = base64.b64encode(open("output.png", "rb").read())
 
-        txt = txt.encode('utf-8)')
+        txt = txt.encode('utf-8')
 
         #self.send_message(channel_id, 'j')
         attachment = {
