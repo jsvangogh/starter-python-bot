@@ -70,5 +70,5 @@ class Messenger(object):
         self.send_message(channel_id, msg)
     def process_csv(self, channel_id, msg):
         r = requests.get(str(msg.encode('utf-8')[1:-1])
-        self.send_message(channel_id, 'processing message to store as csv' + str(r.status_code))
+        self.send_message(channel_id, str(r.status_code))
     
