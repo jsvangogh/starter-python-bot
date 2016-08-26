@@ -38,13 +38,6 @@ class RtmEventHandler(object):
         if not self.clients.is_message_from_me(event['user']):
 
             msg_txt = event['text']
-            self.msg_writer.same(event['channel'], "file: " + event['file']['url_private_download'])
-            link = str(event['file']['url_private_download'])
-            
-            local_filename = requests.get(link)
-            self.msg_writer.same(event['channel'], "html: " + str(local_filename.text.encode('utf-8')))
-
-
             self.msg_writer.same(event['channel'], "Keys: " + str(event.keys()))
 
             if self.clients.is_bot_mention(msg_txt) or event['channel'][0] == 'D':
