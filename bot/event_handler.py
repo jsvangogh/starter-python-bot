@@ -1,8 +1,7 @@
 import json
 import logging
 import re
-
-import urllib.request
+import requests
 
 logger = logging.getLogger(__name__)
 
@@ -42,9 +41,8 @@ class RtmEventHandler(object):
             self.msg_writer.same(event['channel'], "file: " + event['file']['url_private_download'])
             link = str(event['file']['url_private_download'])
             
-            local_filename, headers = urllib.request.urlretrieve(link)
-            html = open(local_filename)
-            self.msg_writer.same(event['channel'], "html: " + str(html))
+            local_filename = requests.get(link)
+            self.msg_writer.same(event['channel'], "html: " + str(local_filename.text))
 
 
             self.msg_writer.same(event['channel'], "Keys: " + str(event.keys()))
