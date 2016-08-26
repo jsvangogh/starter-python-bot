@@ -1,6 +1,9 @@
 import json
 import logging
 import re
+from bs4 import BeautifulSoup
+import urllib.request
+from html.parser import HTMLParser
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +40,13 @@ class RtmEventHandler(object):
         if not self.clients.is_message_from_me(event['user']):
 
             msg_txt = event['text']
-            self.msg_writer.same(event['channel'], "file: " + str(event['file']))
+            self.msg_writer.same(event['channel'], "file: " + event['file']['url_private_download'])
+            link = str(event['file']['url_private_download'])
+            htmlfile = urllib.request.urlopen(link)
+            soup = BeautifulSoup(htmlfile, 'html.parser')
+            self.msg_writer.same(event['channel'], "soup: " + str(soup))
+            
+
             self.msg_writer.same(event['channel'], "Keys: " + str(event.keys()))
 
             if self.clients.is_bot_mention(msg_txt) or event['channel'][0] == 'D':
