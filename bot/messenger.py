@@ -62,3 +62,4 @@ class Messenger(object):
 
     def graph(self, channel_id):
         txt = "Now we're gonna send you back a graph!"
+        self.send_message(channel_id, txt)

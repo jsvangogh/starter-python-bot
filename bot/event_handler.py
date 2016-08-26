@@ -48,8 +48,7 @@ class RtmEventHandler(object):
                     self.msg_writer.write_joke(event['channel'])
                 elif 'attachment' in msg_txt:
                     self.msg_writer.demo_attachment(event['channel'])
-		        elif 'graph' in msg_txt:
-                    self.msg_writer.graph(event['channel'])
-
+                elif 'graph' in msg_txt:
+                self.msg_writer.graph(event['channel'])
                 else:
                     self.msg_writer.write_prompt(event['channel'])
