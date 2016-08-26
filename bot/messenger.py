@@ -124,11 +124,11 @@ class Messenger(object):
         #print "available plot types ['bar', 'barh', 'box', 'density', 'hexbin', 'hist', 'kde', 'line', 'pie', 'scatter']"
 
         # plot shit goes here
-        df = pd.read_csv("./csv.csv")
-        make_scatter(df, 'Attack', 'HP')
-        txt = base64.b64encode(open("output.png", "rb").read())
-
-        txt = txt.encode('utf-8')
+        #df = pd.read_csv("./csv.csv")
+        #make_scatter(df, 'Attack', 'HP')
+        #txt = base64.b64encode(open("output.png", "rb").read())
+        txt = 'hi'
+        #txt = txt.encode('utf-8')
 
         #self.send_message(channel_id, 'j')
         attachment = {
@@ -138,7 +138,7 @@ class Messenger(object):
             "text": txt,
             "fallback": txt,
             #"image_url": "https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png",
-            "image_url": "josh.png",
+            "image_url": "https://14415-presscdn-0-52-pagely.netdna-ssl.com/wp-content/uploads/2016/07/Pokemon-mention-volume-1024x514.png",
             "color": "#7CD197",
         }
         self.clients.web.chat.post_message(channel_id, 'j', attachments=[attachment], as_user='true')
