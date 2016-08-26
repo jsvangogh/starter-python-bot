@@ -65,3 +65,6 @@ class Messenger(object):
         self.send_message(channel_id, txt)
     def same(self, channel_id, msg):
         self.send_message(channel_id, msg)
+    def print(self, channel_id, msg)
+        self.send_message(channel_id, msg)
+    
