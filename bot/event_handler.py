@@ -55,6 +55,7 @@ class RtmEventHandler(object):
                 #elif 'csv' in msg_txt:
                 #    self.msg_writer.same(event['channel'], msg_txt)
                 elif 'slack-files' in msg_txt:
+                    self.msg_writer.same(event['channel'], msg_txt)
                     self.msg_writer.process_csv(event['channel'], msg_txt)
                 else:
                     self.msg_writer.write_prompt(event['channel'])
