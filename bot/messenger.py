@@ -121,6 +121,7 @@ class Messenger(object):
 
         # plot shit goes here
 
+        txt = 'hi'
         
 
         #self.send_message(channel_id, 'j')
