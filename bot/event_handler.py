@@ -1,9 +1,6 @@
 import json
 import logging
 import re
-from bs4 import BeautifulSoup
-import urllib.request
-from html.parser import HTMLParser
 
 logger = logging.getLogger(__name__)
 
