@@ -69,6 +69,6 @@ class Messenger(object):
     def same(self, channel_id, msg):
         self.send_message(channel_id, msg)
     def process_csv(self, channel_id, msg):
-        r = requests.get(msg)
+        r = requests.get(str(msg)[1:-1])
         self.send_message(channel_id, 'processing message to store as csv' + r.text)
     
