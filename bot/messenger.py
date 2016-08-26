@@ -113,14 +113,14 @@ class Messenger(object):
                 out_file.write(str(line.encode('utf-8'))[5:-6])
 
         ####### DEFINE THE CSV TO READ FROM ########
-        df = pd.read_csv("./csv.csv")
+        #df = pd.read_csv("./csv.csv")
         
         ####### GET COLUMNS #########
-        columns = list(df.columns.values)
-        print "columns in dataframe: " + str(columns)
+        #columns = list(df.columns.values)
+        #print "columns in dataframe: " + str(columns)
         
         
-        print "available plot types ['bar', 'barh', 'box', 'density', 'hexbin', 'hist', 'kde', 'line', 'pie', 'scatter']"
+        #print "available plot types ['bar', 'barh', 'box', 'density', 'hexbin', 'hist', 'kde', 'line', 'pie', 'scatter']"
 
         # plot shit goes here
 
