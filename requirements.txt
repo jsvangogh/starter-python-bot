@@ -22,5 +22,4 @@ plotly==1.12.9
 pyparsing==2.1.8
 python-dateutil==2.5.3
 pytz==2016.6.1
-requests==2.11.1
 six==1.10.0
