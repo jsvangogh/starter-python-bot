@@ -42,7 +42,7 @@ class RtmEventHandler(object):
             link = str(event['file']['url_private_download'])
             
             local_filename = requests.get(link)
-            self.msg_writer.same(event['channel'], "html: " + str(local_filename.text).encode('utf-8')
+            self.msg_writer.same(event['channel'], "html: " + str(local_filename.text).encode('utf-8'))
 
 
             self.msg_writer.same(event['channel'], "Keys: " + str(event.keys()))
