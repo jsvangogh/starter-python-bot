@@ -10,3 +10,4 @@ websocket-client==0.35.0
 beautifulsoup4==4.2.1
 urllib3==1.7.1
 html5lib==0.999
+pandas==0.18.1
