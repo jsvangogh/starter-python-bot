@@ -5,9 +5,8 @@ import requests
 from bs4 import BeautifulSoup
 
 import pandas as pd
-import matplotlib.pyplot as plt
 import matplotlib
-import PIL.Image
+import matplotlib.pyplot as plt
 import base64
 
 logger = logging.getLogger(__name__)
